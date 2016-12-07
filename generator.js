@@ -9,18 +9,21 @@ app.use(function *(next) {
     var start = new Date();
     yield next;
     var ms = new Date() - start;
-    console.log('time = '+ms + 'ms');
+    console.log('执行1,' + ms + 'ms');
 });
 // logger
 app.use(function *(next) {
     var start = new Date();
     yield next;
     var ms = new Date() - start;
-    console.log('%s %s - %s', this.method, this.url, ms);
+    console.log('执行2,' + ms + 'ms');
 });
 // response
 app.use(function *() {
-    this.body='hello generator!';
+    var start = new Date();
+    this.body = 'hello generator!';
+    var ms = new Date() - start;
+    console.log('执行3,' + ms + 'ms');
 });
 
 app.listen(3000);
