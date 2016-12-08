@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cag2050/koa_demo#readme",
   "dependencies": {
+    "keygrip": "^1.0.1",
     "koa": "^1.2.4"
   }
 }
