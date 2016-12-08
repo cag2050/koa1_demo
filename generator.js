@@ -10,6 +10,7 @@ app.use(function *(next) {
     yield next;
     var ms = new Date() - start;
     console.log('执行1,' + ms + 'ms');
+    this.set('X-Response-Time', ms + 'ms');
 });
 // logger
 app.use(function *(next) {
