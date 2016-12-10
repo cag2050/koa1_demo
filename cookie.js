@@ -1,11 +1,14 @@
 var koa = require('koa');
 var app = koa();
 
-app.use(function *() {
+app.use(function *(next) {
     console.log(111);
-    app.keys = ['1111', '222'];
-    this.cookies.set('name', 'aaaaaaaaaaaa', {signed: true});
     this.body = 'hello koa333333!';
+    app.keys = ['1111'];
+    this.cookies.set('name', 'bbb', {signed: true});
+    //console.log(this.cookies.get('name'));
+    //console.log(this.cookies.get('name.sig'));
+    yield next;
 });
 
 app.listen(3000);

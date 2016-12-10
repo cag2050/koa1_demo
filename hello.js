@@ -4,10 +4,17 @@
 var koa = require('koa');
 var app = koa();
 
-app.use(function *() {
+app.use(function *(next) {
     console.log(111);
-    this.cookies.set('name','CAG');
-    this.body = 'hello koa333333!';
+    yield next;
+    console.log(111000);
+    //this.cookies.set('name','jeff');
+    //this.body = 'hello koa333333!';
 });
 
+app.use(function *() {
+    console.log(222);
+    //this.cookies.set('name','jeff');
+    //this.body = 'hello koa333333!';
+});
 app.listen(3000);
